@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import {Link} from 'react-router-dom';
-
+import useFetch from "./customhook";
 function Sectioncomp (){
 
-    const[datas,setDatas]=useState([]);
+    //const[datas,setDatas]=useState([]);
     const [images, setImages] = useState([]);
     const categoryImages = {
         "electronics": "https://c.pxhere.com/images/dd/fb/32f6e4c9eff8c290ca3466946ce7-1595236.jpg!d",
@@ -12,12 +12,15 @@ function Sectioncomp (){
         "women's clothing": "https://tse2.mm.bing.net/th?id=OIP.1Pa2UnflKO1hvkfk_MH39AHaHa&pid=Api&P=0&h=180",
       };
 
-    useEffect(()=>{
-        fetch('https://fakestoreapi.com/products/categories')
-        .then(response => response.json())
-        .then(json => setDatas(json))
-    },[])
 
+
+    // useEffect(()=>{
+    //     fetch('https://fakestoreapi.com/products/categories')
+    //     .then(response => response.json())
+    //     .then(json => setDatas(json))
+    // },[])
+
+    const [datas] = useFetch("https://fakestoreapi.com/products/categories");
 
         return(
             <>

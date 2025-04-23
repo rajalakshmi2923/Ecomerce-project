@@ -15,6 +15,10 @@ function Sidenavcomp() {
         <>
             <div style={{ paddingTop: 170, paddingBottom: 30, display: 'flex', justifyContent: 'flex-end' }}>
                 <nav style={{ paddingRight: 20 }}>
+                    <NavLink to={'/products'} style={({ isActive }) => ({
+                        color: isActive ? 'violet' : 'blue',
+                        textDecoration: 'none',
+                    })}>All products/</NavLink>
                     {datas.map((value) => (
                         <span key={value}>
                             <NavLink

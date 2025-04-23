@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
 import {Link,useNavigate } from 'react-router-dom';
 import Sidenavcomp from './sidenav';
+import useFetch from "./customhook";
 
 function Electroniccomp (){
 
-    const[datas,setDatas]=useState([]);
+    // const[datas,setDatas]=useState([]);
     const navigation = useNavigate();
-    useEffect(()=>{
-        fetch('https://fakestoreapi.com/products/category/electronics')
-        .then(response => response.json())
-        .then(json => setDatas(json))
-    },[])
+    const [datas] = useFetch("https://fakestoreapi.com/products/category/electronics");
+    // useEffect(()=>{
+    //     fetch('https://fakestoreapi.com/products/category/electronics')
+    //     .then(response => response.json())
+    //     .then(json => setDatas(json))
+    // },[])
 
     const DisplayCard = (val)=>{
         navigation(`/products/${val}`)

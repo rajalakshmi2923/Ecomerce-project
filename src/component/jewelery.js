@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import {Link,useNavigate} from 'react-router-dom';
+import useFetch from "./customhook";
 function Jewelerycomp (){
       
-    const[datas,setDatas]=useState([]);
+    //const[datas,setDatas]=useState([]);
     const navigation = useNavigate();
-    useEffect(()=>{
-        fetch('https://fakestoreapi.com/products/category/jewelery')
-        .then(response => response.json())
-        .then(json => setDatas(json))
-    },[])
+    // useEffect(()=>{
+    //     fetch('https://fakestoreapi.com/products/category/jewelery')
+    //     .then(response => response.json())
+    //     .then(json => setDatas(json))
+    // },[])
+    const [datas] = useFetch("https://fakestoreapi.com/products/category/jewelery");
 
     const DisplayCard = (val)=>{
         navigation(`/products/${val}`)

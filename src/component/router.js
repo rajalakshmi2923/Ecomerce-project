@@ -9,6 +9,8 @@ import Womencomp from './womenclothing';
 import ProductComp from './products'
 import Signup from './signup';
 import Signin from './signin';
+import Allproducts from './allproducts';
+import ProductEdit from './productdetails';
 class Routingcomp extends React.Component{
     constructor(){
         super();
@@ -28,6 +30,8 @@ class Routingcomp extends React.Component{
           <Route path="/products/:id" element={<ProductComp />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/signin" element={<Signin />} />
+          <Route path="/products" element={<Allproducts />} />
+          <Route path="/edit/:id" element={<ProductEdit />} />
         </Route>
       </Routes>
     </BrowserRouter>

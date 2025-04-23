@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import {Link,useNavigate} from 'react-router-dom';
+import useFetch from "./customhook";
 function Mencomp (){
-    const[datas,setDatas]=useState([]);
+    //const[datas,setDatas]=useState([]);
     const navigation = useNavigate();
-    useEffect(()=>{
-        fetch(`https://fakestoreapi.com/products/category/men's%20clothing`)
-        .then(response => response.json())
-        .then(json => setDatas(json))
-    },[])
+    // useEffect(()=>{
+    //     fetch(`https://fakestoreapi.com/products/category/men's%20clothing`)
+    //     .then(response => response.json())
+    //     .then(json => setDatas(json))
+    // },[])
+    const [datas] = useFetch(`https://fakestoreapi.com/products/category/men's%20clothing`);
 
     const DisplayCard = (val)=>{
         navigation(`/products/${val}`)
