@@ -28,12 +28,17 @@ function Signin() {
           'Content-Type': 'application/json'
         }
       })
-        
-        .then(data => {
-          console.log('Login success:', data);
-          alert('Login successful! Token: ' + data.token);
-          
-        })
+      
+      .then(response => {
+        if (!response.ok) {
+         return response.json().then(err => {
+            throw new Error(err.message || 'Login failed');
+          });
+        }
+        return response.json();
+      })
+    
+      
         .catch(error => {
           console.error(error);
           alert('Login failed. Please check credentials.');
