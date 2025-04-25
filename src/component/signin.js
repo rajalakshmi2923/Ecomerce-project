@@ -1,6 +1,8 @@
 import React,{useState} from "react";
+import { useNavigate } from 'react-router-dom';
 
 function Signin() {
+  const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
       username: '',
@@ -29,16 +31,12 @@ function Signin() {
         }
       })
       
-      .then(response => {
-        if (!response.ok) {
-         return response.json().then(err => {
-            throw new Error(err.message || 'Login failed');
-          });
-        }
-        return response.json();
-      })
-    
-      
+        .then(data => {
+          console.log('Login success:', data);
+          alert('Login successful!' );
+          navigate('/')
+          
+        })
         .catch(error => {
           console.error(error);
           alert('Login failed. Please check credentials.');
